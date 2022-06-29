@@ -1,0 +1,11 @@
+@font-face {
+    font-family: modak;
+    src: url(fonts/font-modak.woff2);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: noteworthy;
+    src: url(fonts/font-noteworthy.woff2);
+    font-display: swap;
+}

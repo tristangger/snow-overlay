@@ -1,0 +1,15 @@
+{
+  "name": "eslint-plugin-if6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+ "scripts": {
+  "lint": "eslint build; exit 0"
+},
+  "author": "",
+  "license": "ISC"
+}
+

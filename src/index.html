@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Snow overlayfür diverrse Webseiten️">
+    <meta name="viewport"
+          content="viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1">
+    <link rel="stylesheet"
+          href="font.css"
+          media="print" onload="this.media='all'"/>
+
+
+    <title>Snow ovrelay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        body {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: gray;
+            background-image: url("images/hintergrund-4k.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                background-image: url("images/hintergrund.jpg");
+            }
+
+            .text {
+                max-height: 35vh;
+                overflow-y: scroll;
+            }
+        }
+
+        .container {
+            z-index: 3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .logo {
+            font-size: min(20vw, 20vh);
+            color: #f5f4e4;
+            font-family: modak, serif;
+            transform: rotate(-7deg);
+            -webkit-text-stroke: 2px #f6c64a;
+            text-shadow: -1px 9px 0px #dd8a03, 2px 2px 5px #ddcd30;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.1;
+            filter: drop-shadow(0.3rem 0.3rem 3rem #f6c64a);
+            font-variant-ligatures: none;
+            padding-bottom: 2rem;
+        }
+
+        .text {
+            z-index: 2;
+            color: aliceblue;
+            font-family: noteworthy;
+            font-size: calc(1em + 0.8vw);; /* Startgröße Mobile, Lösung für restliche Formate gehört zur Aufgabe */
+            text-shadow: 2px 2px rgba(0, 0, 0, 1);
+            margin-top: 3rem;
+        }
+
+        .text::-webkit-scrollbar {
+            display: none;
+        }
+
+        button, select {
+            cursor: pointer;
+        }
+
+        .textContainer {
+            display: flex;
+            /*justify-content: center;*/
+            flex-direction: column;
+            align-items: center;
+            padding: 2em;
+            flex-grow: 3;
+        }
+
+
+        .iframe-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        .iframe-selector {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            padding: 1rem;
+            min-width: 200px;
+            max-width: 80%;
+            z-index: 4;
+            color: aliceblue;
+            font-family: noteworthy;
+            font-size: calc(1em + 0.8vw);; /* Startgröße Mobile, Lösung für restliche Formate gehört zur Aufgabe */
+            text-shadow: 2px 2px rgba(0, 0, 0, 1);
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            bottom: 16px;
+        }
+
+        .iframe-selector select {
+            margin: 1rem 0;
+            font-family: noteworthy;
+            padding: .5rem 1rem;
+            background-color: white;
+            border-radius: 4px;
+            color: black;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .iframe-selector button {
+            font-family: noteworthy;
+            padding: .5rem 1rem;
+            background-color: white;
+            border-radius: 4px;
+            color: black;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+    </style>
+</head>
+<body>
+
+<div class="textContainer">
+    <h1 class="logo">Snow-overlay</h1>
+    <p class="text">
+        Du kannst es jetzt im Internet schneien lassen.
+
+        Wähle jetzt einfach eine Website aus und lass es dort direkt scheinen.
+    </p>
+</div>
+
+<form class="iframe-selector">
+    <label for="websites">Wähle deine Webseite:</label>
+    <select id="websites" name="websites">
+        <option value="https://www.audi.de/de/brand/de.html">Audi</option>
+        <option value="https://www.bild.de/">Bild.de</option>
+        <option value="https://www.boersen-zeitung.de/">Börsen Zeitung</option>
+        <option value="https://www.voeb.de/startseite">Bundesverband Öffentlicher Banken Deutschlands (VÖB)</option>
+        <option value="https://www.finanzgruppe.de/">Bundesverband Volksbanken & Raiffeisenbanken (BVR)</option>
+        <option value="https://magazin.comdirect.de/">comdirect</option>
+        <option value="https://www.faz.net/aktuell/">FAZ</option>
+        <option value="https://finanz-szene.de/">finanz-szene.de</option>
+        <option value="https://www.hamburg.de/">Hamburg</option>
+        <option value="https://www.handelsblatt.com/">Handelsblatt</option>
+        <option value="https://haspa-next.de/">HASPA Next</option>
+        <option value="https://www.horizont.net/">Horizont</option>
+        <option value="https://www.maserati.com/">Maserati</option>
+        <option value="https://www.messe-duesseldorf.de/">Messe Düsseldorf</option>
+        <option value="https://www.rewe.de/">Rewe</option>
+        <option value="https://www.riodejaneiro.com/">Rio de Janero</option>
+        <option value="https://www.spiegel.de/">Spiegel Online (SPON)</option>
+        <option value="https://www.tagesschau.de/">Tagesschau</option>
+        <option value="https://www.wikipedia.de">Wikipedia</option>
+    </select>
+    <button id="button">Lasse es scheien</button>
+</form>
+<iframe id="iframe" class="iframe-container" src="">
+    Your browser doesn't support iframes
+</iframe>
+
+<canvas id="app" width="600" height="300" class="container">
+</canvas>
+
+<script src="index.js" defer></script>
+<script>
+    window.onload = () => {
+        game();
+        window.addEventListener("resize", () => {
+            game().reset();
+        });
+    };
+
+    let URL = '';//https://www.audi.de/de/brand/de.html';
+    document.querySelector("#button").addEventListener("click", selectIframe);
+    document.querySelector("#websites").addEventListener("change", setURL);
+
+    function setURL(event) {
+        URL = event.target.value;
+    }
+
+    function selectIframe(event) {
+        event.preventDefault();
+        const iframe = document.querySelector('#iframe')
+
+        iframe.setAttribute('src', URL);
+        iframe.style.display = 'block';
+
+        return value;
+    }
+</script>
+</body>
+</html>
